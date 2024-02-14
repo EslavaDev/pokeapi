@@ -27,7 +27,7 @@ export const Card = ({pokemon, queryKey}: any) => {
       />
       <Text style={styles.name}>{pokemonData?.name}</Text>
       <View style={styles.info}>
-        <Text style={styles.text}>#{pokemonData?.order}</Text>
+        <Text style={styles.text}>#{pokemonData?.id}</Text>
         {/* <Text style={styles.text}>Type: {data?.types?.map(item => item.type.name).join(", ")}</Text>
         <Text style={styles.text}>HP: {data?.stats[0]?.base_stat}</Text> */}
       </View>

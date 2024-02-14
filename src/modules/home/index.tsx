@@ -47,7 +47,7 @@ export const HomePage = () => {
             ListFooterComponent={<Loader validation={isFetchingNextPage} />}
           />
         </SearchPokemon>
-        {isLoading ? <Text>Loading...</Text> : null}
+        <Loader validation={isLoading} />
         {isError ? <Text>{error?.message}</Text> : null}
       </View>
     </Layout>

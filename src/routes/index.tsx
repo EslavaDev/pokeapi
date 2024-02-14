@@ -16,6 +16,8 @@ const HomePage = register({
 
 
 export const RoutesRoot = () => {
+
+  
   return (
     <Root.Navigator initialRouteName="Home">
         <Root.Screen
@@ -25,7 +27,7 @@ export const RoutesRoot = () => {
         />
         <Root.Screen
           name="Detail"
-          options={{headerShown: true}}
+          options={{headerShown: true, title: 'Pokemon'}}
           component={DetailPage}
         />
     </Root.Navigator>

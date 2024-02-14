@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlexStyle, SafeAreaView} from 'react-native';
+import {FlexStyle, SafeAreaView, ScrollView} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {stylesLayout} from './styles';
 
@@ -16,8 +16,12 @@ export const Layout = ({
   position = 'relative',
   keyboard = false,
 }: Props) => {
-    const styles = stylesLayout({justifyContent, position});
-  let render = <SafeAreaView style={styles.container}>{children}</SafeAreaView>;
+  const styles = stylesLayout({justifyContent, position});
+  let render = (
+    <ScrollView>
+      <SafeAreaView style={styles.container}>{children}</SafeAreaView>
+    </ScrollView>
+  );
   if (keyboard) {
     render = (
       <KeyboardAwareScrollView
