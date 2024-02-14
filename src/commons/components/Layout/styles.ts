@@ -12,6 +12,7 @@ export const stylesLayout = (
       alignItems: 'center',
       justifyContent,
       position,
+      width: '100%',
     },
     keyboard: {
       flex: 1,

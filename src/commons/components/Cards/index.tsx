@@ -1,45 +1,59 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import {useQuery} from '@tanstack/react-query';
+import React, {useCallback} from 'react';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
-export const Card = ({ pokemon, queryKey }: any) => {
-    const {data} = useQuery({
-        queryKey: [queryKey, pokemon.name],
-        queryFn: () =>
-          fetch(pokemon.url).then(res => res.json()),
-      });
+export const Card = ({pokemon, queryKey}: any) => {
+  console.log("🚀 ~ Card ~ pokemon:", pokemon)
+  const navigation = useNavigation();
+  const {data} = useQuery({
+    queryKey: [queryKey, pokemon.name],
+    queryFn: () => fetch(pokemon.url).then(res => res.json()),
+    enabled: !!pokemon?.sprites,
+  });
+
+  const pokemonData = data || pokemon;
+
+  const onPress = useCallback(() => {
+    navigation.navigate('Detail', {pokemon: pokemonData});
+  }, [navigation, pokemonData]);
   return (
-    <View style={styles.card}>
-      <Image source={{ uri: data?.sprites?.front_default }} style={styles.image} />
-      <Text style={styles.name}>{data?.name}</Text>
+    <TouchableOpacity onPress={onPress} style={styles.card}>
+      <Image
+        source={{uri: pokemonData?.sprites?.front_default}}
+        style={styles.image}
+      />
+      <Text style={styles.name}>{pokemonData?.name}</Text>
       <View style={styles.info}>
-        <Text style={styles.text}>#{data?.order}</Text>
+        <Text style={styles.text}>#{pokemonData?.order}</Text>
         {/* <Text style={styles.text}>Type: {data?.types?.map(item => item.type.name).join(", ")}</Text>
         <Text style={styles.text}>HP: {data?.stats[0]?.base_stat}</Text> */}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
+    flex:1,
+    maxHeight: 250,
     backgroundColor: '#f0f0f0',
     borderRadius: 10,
     overflow: 'hidden',
     borderColor: '#ddd',
     borderWidth: 1,
-    margin: 10,
+    margin: 5,
     elevation: 3,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
   image: {
     width: '100%',
-    height: 250,
+    height: 150,
     backgroundColor: 'red',
-    resizeMode: 'cover',
+    resizeMode: 'contain',
   },
   name: {
     fontWeight: 'bold',
