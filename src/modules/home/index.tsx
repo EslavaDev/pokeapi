@@ -1,5 +1,6 @@
 import {FlatList, Text, View} from 'react-native';
 import {useInfiniteQuery} from '@tanstack/react-query';
+import React from 'react';
 
 import {Loader} from '@src/commons/components/Loader';
 import {Layout} from '@src/commons/components/Layout';
@@ -7,7 +8,7 @@ import {Layout} from '@src/commons/components/Layout';
 import {QueryKeys} from './constants';
 import {Card} from './components/Cards';
 import {SearchPokemon} from './components/Search';
-import {pokemonPaginationService} from './services';
+import {pokemonPaginationService} from '../../services';
 
 export const HomePage = () => {
   const {
@@ -41,7 +42,9 @@ export const HomePage = () => {
             keyExtractor={item => item.name}
             numColumns={2}
             onEndReached={() => {
-              if (hasNextPage) fetchNextPage();
+              if (hasNextPage) {
+                fetchNextPage();
+              }
             }}
             onEndReachedThreshold={0.5}
             ListFooterComponent={<Loader validation={isFetchingNextPage} />}

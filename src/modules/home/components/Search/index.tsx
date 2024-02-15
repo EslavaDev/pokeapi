@@ -1,3 +1,4 @@
+import React from 'react';
 import {useQuery} from '@tanstack/react-query';
 import {PropsWithChildren, useState} from 'react';
 import {Text, TextInput} from 'react-native';
@@ -6,8 +7,8 @@ import {Loader} from '@src/commons/components/Loader';
 import useDebounce from '@src/commons/hooks/useDebounce';
 
 import styles from './styles';
-import { Card } from '../Cards';
-import {searchPokemonService} from '../../services';
+import {Card} from '../Cards';
+import {searchPokemonService} from '../../../../services';
 
 type Props = PropsWithChildren<{}>;
 
@@ -37,7 +38,7 @@ export const SearchPokemon = ({children}: Props) => {
         onChangeText={setSearchQuery}
         style={styles.input}
       />
-      {!!searchQuery?.length ? render : children}
+      {searchQuery?.length ? render : children}
     </>
   );
 };

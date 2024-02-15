@@ -4,7 +4,7 @@ import {
   pokemonFullDataService,
   pokemonPaginationService,
   searchPokemonService,
-} from '@src/modules/home/services';
+} from '@src/services';
 import {ivysaur} from '../../results/constants';
 
 describe('Services', () => {
