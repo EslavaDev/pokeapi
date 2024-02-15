@@ -12,7 +12,7 @@ export const Stats = ({stats}: Props) => {
       <Text style={styles.title}>Stats</Text>
       {stats?.map((item: any) => (
         <View key={item.stat.name} style={styles.statContainer}>
-          <Text style={styles.statText}>{(item.stat.name as String).toUpperCase()} :</Text>
+          <Text style={styles.statText}>{item.stat.name} :</Text>
           <Text>{item.base_stat}</Text>
         </View>
       ))}

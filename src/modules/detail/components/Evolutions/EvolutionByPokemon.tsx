@@ -15,7 +15,6 @@ export const EvolutionByPokemon = ({url}: any) => {
       ]),
   });
 
-  console.log('🚀 ~ EvolutionByPokemon ~ evolution:', evolution);
   return (
     <View style={styles.container}>
       {evolution?.map((item: any) => (

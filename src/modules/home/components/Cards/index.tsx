@@ -8,7 +8,7 @@ import {pokemonFullDataService} from '../../../../services';
 export const Card = ({pokemon, queryKey}: any) => {
   const navigation = useNavigation<any>();
   const {data} = useQuery({
-    queryKey: [queryKey, pokemon.name],
+    queryKey: [queryKey, pokemon?.name ?? ''],
     queryFn: pokemonFullDataService(pokemon?.url ?? ''),
     enabled: !pokemon?.sprites,
   });

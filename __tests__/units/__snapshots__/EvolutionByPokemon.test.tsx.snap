@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the component without crashing 1`] = `
+<View
+  style={
+    {
+      "alignItems": "flex-start",
+      "paddingHorizontal": 10,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "fontSize": 20,
+        "textTransform": "capitalize",
+      }
+    }
+  >
+    Bulbasaur =&gt; Ivysaur =&gt; Venusaur
+  </Text>
+  <Text
+    style={
+      {
+        "fontSize": 20,
+        "textTransform": "capitalize",
+      }
+    }
+  >
+    Charmander =&gt; Charmeleon =&gt; Charizard
+  </Text>
+  <Text
+    style={
+      {
+        "fontSize": 20,
+        "textTransform": "capitalize",
+      }
+    }
+  >
+    Squirtle =&gt; Wartortle =&gt; Blastoise
+  </Text>
+</View>
+`;
