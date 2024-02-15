@@ -33,5 +33,5 @@ Para poder correr este proyecto tienes que tener previamente instalado react nat
 ![details](image-4.png)
 
 ### TEST
-<img width="408" alt="Screenshot 2024-02-15 at 12 45 58 PM" src="https://github.com/EslavaDev/pokeapi/assets/31320429/cc489145-e4bd-42c2-a500-13782ee80027">
+![coverage](image-5.png)
 

@@ -7,7 +7,9 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "test cover": "jest --coverage"
+
   },
   "dependencies": {
     "@eva-design/eva": "^2.2.0",

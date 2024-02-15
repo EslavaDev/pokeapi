@@ -25,6 +25,14 @@ describe('Services', () => {
     expect(resolve.species.name).toBe(ivysaur.species.name);
   });
 
+  test('should return throw when not found pokemon', async () => {
+    const resolve = await pokemonFullDataService(
+      'https://pokeapi.co/api/v2/pokemon/fdsfds',
+    );
+
+    await expect(resolve).rejects.toThrow();
+  });
+
   test('should return ivysaur with name', async () => {
     const resolve = await searchPokemonService('ivysaur')();
     expect(resolve.species.name).toBe(ivysaur.species.name);
@@ -35,8 +43,18 @@ describe('Services', () => {
     expect(resolve.species.name).toBe(ivysaur.species.name);
   });
 
+  test('should not found pokemon with ', async () => {
+    const resolve = await searchPokemonService('1999');
+    await expect(resolve).rejects.toThrow();
+  });
+
   test('should return evolve data', async () => {
     const resolve = await pokemonEvolutionService(1)();
     expect(resolve.chain.species.name).toBe('bulbasaur');
+  });
+
+  test('should return evolve not found', async () => {
+    const resolve = await pokemonEvolutionService(1888);
+    await expect(resolve).rejects.toThrow();
   });
 });

@@ -2,9 +2,6 @@ export const pokemonPaginationService = async ({pageParam = 0}) => {
   const response = await fetch(
     `https://pokeapi.co/api/v2/pokemon?offset=${pageParam}&limit=10`,
   );
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
   return response.json();
 };
 
