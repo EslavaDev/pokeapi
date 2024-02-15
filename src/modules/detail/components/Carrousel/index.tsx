@@ -19,13 +19,19 @@ export const Carrousel = ({pokemon}: Props) => {
     );
   };
 
-  const imagePokemon = Object.values(pokemon?.sprites || {}).filter(
-    (item: any) => typeof item === 'string' && item.includes('https'),
-  );
+  const imagePokemon =
+    (Object.values(pokemon?.sprites || {}).filter(
+      (item: any) => typeof item === 'string' && item.includes('https'),
+    ) as string[]) || [];
 
   return (
     <View style={styles.container}>
-      <FlatList data={imagePokemon} renderItem={_renderItem} horizontal />
+      <FlatList
+        data={imagePokemon}
+        renderItem={_renderItem}
+        horizontal
+        keyExtractor={(item: string) => item}
+      />
     </View>
   );
 };

@@ -17,8 +17,10 @@ export const EvolutionByPokemon = ({url}: any) => {
 
   return (
     <View style={styles.container}>
-      {evolution?.map((item: any) => (
-        <Text style={styles.text}>{item?.join(' => ')}</Text>
+      {evolution?.map((item: any, index: number) => (
+        <Text key={`${item}-${index}`} style={styles.text}>
+          {item?.join(' => ')}
+        </Text>
       ))}
     </View>
   );
