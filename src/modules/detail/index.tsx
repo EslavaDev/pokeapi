@@ -1,12 +1,11 @@
-import {useRoute} from '@react-navigation/native';
-import {Layout} from '@src/commons/components/Layout';
-import {useQuery} from '@tanstack/react-query';
-import {Dimensions, FlatList, Image, Text, View} from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import { Layout } from '@src/commons/components/Layout';
+import { useQuery } from '@tanstack/react-query';
+import { Dimensions, FlatList, Image, Text, View } from 'react-native';
 import {
-  pokemonEvolutionService,
-  pokemonFullDataService,
+  pokemonFullDataService
 } from '../home/services';
-import {useEffect, useState} from 'react';
+import { EvolutionPokemon } from './components/EvolutionPokemon';
 
 export const DetailPage = () => {
   const {params} = useRoute<any>();
@@ -89,33 +88,4 @@ export const DetailPage = () => {
   );
 };
 
-const EvolutionPokemon = ({url}: any) => {
-  const evolveRecursion = (data: any, stack: any[] = []): any => {
-    console.log('url', data);
-    stack.push(data.species.name);
 
-    if (data.evolves_to.length < 1) {
-      console.log('stack', stack);
-
-      return stack;
-    }
-    const nextEvolve = data?.evolves_to?.[0];
-
-    return evolveRecursion(nextEvolve, stack);
-  };
-  const {data: evolution} = useQuery({
-    queryKey: ['evolution', url],
-    queryFn: pokemonFullDataService(url),
-    select: data =>
-      data.chain.evolves_to.map((result: any) => [
-        data.chain.species.name,
-        ...evolveRecursion(result),
-      ]),
-  });
-
-  return (
-    <View style={{flex: 1, backgroundColor: 'yellow'}}>
-      <Text style={{fontSize: 20}}>{evolution?.join(' => ')}</Text>
-    </View>
-  );
-};

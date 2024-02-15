@@ -1,3 +1,3 @@
 export const QueryKeys = {
-    POKEMON_LIST: 'pokemonList',
-}
+  POKEMON_LIST: 'pokemonList',
+};
