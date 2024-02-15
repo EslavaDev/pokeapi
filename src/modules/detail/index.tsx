@@ -1,11 +1,9 @@
-import { useRoute } from '@react-navigation/native';
-import { Layout } from '@src/commons/components/Layout';
-import { useQuery } from '@tanstack/react-query';
-import { Dimensions, FlatList, Image, Text, View } from 'react-native';
-import {
-  pokemonFullDataService
-} from '../home/services';
-import { EvolutionPokemon } from './components/EvolutionPokemon';
+import {useRoute} from '@react-navigation/native';
+import {Layout} from '@src/commons/components/Layout';
+import {useQuery} from '@tanstack/react-query';
+import {Dimensions, FlatList, Image, Text, View} from 'react-native';
+import {pokemonFullDataService} from '../home/services';
+import {EvolutionPokemon} from './components/EvolutionPokemon';
 
 export const DetailPage = () => {
   const {params} = useRoute<any>();
@@ -34,7 +32,7 @@ export const DetailPage = () => {
   );
 
   return (
-    <Layout justifyContent="center">
+    <Layout justifyContent="center" scroll>
       <View style={{flexDirection: 'row'}}>
         <Text style={{fontWeight: 'bold', fontSize: 25}}>{pokemon.name}</Text>
       </View>
@@ -87,5 +85,3 @@ export const DetailPage = () => {
     </Layout>
   );
 };
-
-

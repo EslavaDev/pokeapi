@@ -8,6 +8,7 @@ interface Props {
   keyboard?: boolean;
   position?: FlexStyle['position'];
   justifyContent?: FlexStyle['justifyContent'];
+  scroll?: boolean;
 }
 
 export const Layout = ({
@@ -15,13 +16,17 @@ export const Layout = ({
   justifyContent = 'center',
   position = 'relative',
   keyboard = false,
+  scroll = false,
 }: Props) => {
   const styles = stylesLayout({justifyContent, position});
-  let render = (
-    <ScrollView>
-      <SafeAreaView style={styles.container}>{children}</SafeAreaView>
-    </ScrollView>
-  );
+  let render = <SafeAreaView style={styles.container}>{children}</SafeAreaView>;
+  if (scroll) {
+    render = (
+      <ScrollView>
+        <SafeAreaView style={styles.container}>{children}</SafeAreaView>
+      </ScrollView>
+    );
+  }
   if (keyboard) {
     render = (
       <KeyboardAwareScrollView
