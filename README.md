@@ -6,7 +6,6 @@ Esta es una prueba utilizando diferentes tecnologías a nivel de app mobile y us
 ### Tecnologias
 - NodeJS 20
 - React Native 0.73.4
-- Vite
 
 ### Instalacion
 Para poder correr este proyecto tienes que tener previamente instalado react native con todas las dependencias necesarias. 
