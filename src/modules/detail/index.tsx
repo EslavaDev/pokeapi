@@ -9,13 +9,14 @@ import {Carrousel} from './components/Carrousel';
 import {Evolutions} from './components/Evolutions';
 import {ContentLayout} from './components/Content';
 import {pokemonFullDataService} from '../../services';
+import {capitalizeTitle} from '../../utils/index';
 
 export const DetailPage = () => {
   const {params} = useRoute<any>();
   const navigation = useNavigation();
   const {pokemon} = params || {};
 
-  navigation.setOptions({title: pokemon?.name ?? 'Pokémon'});
+  navigation.setOptions({title: capitalizeTitle(pokemon?.name ?? 'Pokémon')});
 
   const {data: evolution} = useQuery({
     queryKey: ['evolve'],
@@ -27,8 +28,8 @@ export const DetailPage = () => {
       <ContentLayout>
         <Stats stats={pokemon?.stats} />
         <Types types={pokemon?.types} />
-        <Evolutions evolution={evolution} />
       </ContentLayout>
+      <Evolutions evolution={evolution} />
     </Layout>
   );
 };

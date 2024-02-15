@@ -15,19 +15,23 @@ export const EvolutionByPokemon = ({url}: any) => {
       ]),
   });
 
+  console.log('🚀 ~ EvolutionByPokemon ~ evolution:', evolution);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{evolution?.join(' => ')}</Text>
+      {evolution?.map((item: any) => (
+        <Text style={styles.text}>{item?.join(' => ')}</Text>
+      ))}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'yellow',
+    alignItems: 'flex-start',
+    paddingHorizontal: 10,
   },
   text: {
     fontSize: 20,
+    textTransform: 'capitalize',
   },
 });

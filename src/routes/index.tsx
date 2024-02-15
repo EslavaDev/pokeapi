@@ -14,22 +14,19 @@ const HomePage = register({
   extract: 'HomePage',
 });
 
-
 export const RoutesRoot = () => {
-
-  
   return (
     <Root.Navigator initialRouteName="Home">
-        <Root.Screen
-          name="Home"
-          options={{headerShown: false}}
-          component={HomePage}
-        />
-        <Root.Screen
-          name="Detail"
-          options={{headerShown: true, title: 'Pokemon'}}
-          component={DetailPage}
-        />
+      <Root.Screen
+        name="Home"
+        options={{headerShown: false}}
+        component={HomePage}
+      />
+      <Root.Screen
+        name="Detail"
+        options={{headerShown: true, title: 'Pokemon'}}
+        component={DetailPage}
+      />
     </Root.Navigator>
   );
 };

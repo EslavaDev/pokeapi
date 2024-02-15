@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
   layout: {
     flex: 1,
     width: Dimensions.get('window').width,
+    justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'column',
-    backgroundColor: 'green',
   },
 });
